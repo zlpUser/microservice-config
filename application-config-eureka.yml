@@ -30,7 +30,7 @@ spring:
     name: application-config-eureka
 eureka:
   instance:
-    hostname: erueka7001.com
+    hostname: erueka7002.com
   client:
     register-with-eureka: false  #表示不向注册中心注册自己
     fetch-registry: false   #表示自己就是注册中心，我的职责就是维护服务实现，并不需要去检索服务
