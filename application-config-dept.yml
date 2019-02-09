@@ -1,0 +1,92 @@
+profiles:
+  active:
+    - dev
+
+---
+server:
+  port: 8001
+
+#设置mybatis相关配置
+mybatis:
+  config-location: classpath:mybatis/spring-mybatis.xml   #mybatis的配置文件
+  type-aliases-package:  com.itcase.company.entity     #实体包的别名
+  mapper-locations:
+    - classpath:mybatis/mapper/deptMapper.xml                #mapper影射文件
+
+#spring 相关配置
+spring:
+  datasource:
+    driver-class-name: org.gjt.mm.mysql.Driver     #mysql数据库驱动
+    type: com.alibaba.druid.pool.DruidDataSource   #当前操作数据源的类型
+    url: jdbc:mysql://localhost:3306/springCloud
+    username: root
+    password: Zz123_456
+    dbcp2:
+      min-idle: 5   #数据库最小维持连接数
+      initial-size: 5  #初始化连接数
+      max-idle: 10   #最大连接数
+      max-wait-millis: 200   #等待连接获取的最大超时时间
+
+  application:
+    name: microservicespringcloud-dept
+  profiles: dev
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://erueka7002.com:7002/eureka/,http://erueka7001.com:7001/eureka/,http://erueka7003.com:7003/eureka/
+  instance:    #服务名称的修改
+    instance-id: project_demo1
+    prefer-ip-address: true  #在服务名称的超联结上不显示localhost而显示ip
+
+info:
+  app.name: zlp_microserviceDemo
+  company.name: zlpOwn
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
+---
+
+server:
+  port: 8002
+
+#设置mybatis相关配置
+mybatis:
+  config-location: classpath:mybatis/spring-mybatis.xml   #mybatis的配置文件
+  type-aliases-package:  com.itcase.company.entity     #实体包的别名
+  mapper-locations:
+    - classpath:mybatis/mapper/deptMapper.xml                #mapper影射文件
+
+#spring 相关配置
+spring:
+  datasource:
+    driver-class-name: org.gjt.mm.mysql.Driver     #mysql数据库驱动
+    type: com.alibaba.druid.pool.DruidDataSource   #当前操作数据源的类型
+    url: jdbc:mysql://localhost:3306/springCloud02
+    username: root
+    password: Zz123_456
+    dbcp2:
+      min-idle: 5   #数据库最小维持连接数
+      initial-size: 5  #初始化连接数
+      max-idle: 10   #最大连接数
+      max-wait-millis: 200   #等待连接获取的最大超时时间
+
+  application:
+    name: microservicespringcloud-dept
+  profiles: test
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://erueka7002.com:7002/eureka/,http://erueka7001.com:7001/eureka/,http://erueka7003.com:7003/eureka/
+  instance:    #服务名称的修改
+    instance-id: project_demo2
+    prefer-ip-address: true  #在服务名称的超联结上不显示localhost而显示ip
+
+info:
+  app.name: zlp_microserviceDemo
+  company.name: zlpOwn
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
